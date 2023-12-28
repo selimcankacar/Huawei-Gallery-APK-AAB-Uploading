@@ -25,7 +25,7 @@ curl --location "$url" \
 --form 'fileCount="1"' | jq . > answer2.json
 
 #PARSE RESPONSE BODY (5)
-desturl=$(cat answer2.json | jq -r '.result.UploadFileRsp.fileInfoList.[0].fileDestUlr')
+desturl=$(cat answer2.json | jq -r '.result.UploadFileRsp.fileInfoList[0].fileDestUlr')
 
 #UPDATING APP FILE INFORMATION (6)
 curl --location --request PUT "https://connect-api.cloud.huawei.com/api/publish/v2/app-file-info?appId=${appid}" \
